@@ -36,7 +36,7 @@ let swiftyURLProtocolPassHeader = "X-SwiftyURLProtocol-Pass"
 public extension SwiftyURLProtocol {
 
     /// `Proxy` is the type used to configure external proxies.
-    public enum Proxy {
+    enum Proxy {
 
         /// socks proxy.
         ///
@@ -48,13 +48,13 @@ public extension SwiftyURLProtocol {
     }
 
     /// `Router` is the type used to define which proxy should be used for particular request.
-    public typealias Router = (_ request: URLRequest) -> SwiftyURLProtocol.Proxy?
+    typealias Router = (_ request: URLRequest) -> SwiftyURLProtocol.Proxy?
 
     /// `Probe` is the type used to test host.
     ///
     /// - host:                 an ip or a host of the proxy.
     /// - closure:              should be called when probe is complete.
-    public typealias Probe = (_ host: String, _ closure: @escaping (_ error: Error?) -> Void) -> Stopable
+    typealias Probe = (_ host: String, _ closure: @escaping (_ error: Error?) -> Void) -> Stopable
 
 }
 
@@ -159,7 +159,6 @@ open class SwiftyURLProtocol: URLProtocol {
         }
 
         let timeout = request.timeoutInterval > 20 ? request.timeoutInterval - 10 : 90
-
         probeTimer = Timer(timeInterval: timeout, repeats: false) { [weak self] (_) in
             guard let myself = self else { return }
 

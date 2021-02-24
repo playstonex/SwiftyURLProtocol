@@ -82,7 +82,7 @@ class HTTPConnection: NSObject {
     var httpStream: InputStream?
     var haveReceivedResponse: Bool = false
     var runLoop = RunLoop.main
-    var runLoopMode = RunLoopMode.defaultRunLoopMode
+    var runLoopMode = RunLoop.Mode.default
     fileprivate var buf = [UInt8](repeating: 0, count: 1024)
 
     weak var delegate: HTTPConnectionDelegate?
